@@ -10,6 +10,13 @@ class TokenNames:
     OPER = 'OPER'
     DELIM = 'DELIM'
 
+class States:
+    H = 'H'
+    ID = 'ID'
+    NM = 'NM'
+    ASGN = 'ASGN'
+    DLM = 'DLM'
+    ERR = 'ERR'
 class Token:
     def __init__(self, token_name, token_value):
         self.token_name = token_name
@@ -107,12 +114,6 @@ def add_token(tok):
         lt.next = lexeme
         lt = lexeme
     print("Token created - name:", tok.token_name, "value:", tok.token_value)
-class States:
-    H = 'H'
-    ID = 'ID'
-    NM = 'NM'
-    ASGN = 'ASGN'
-    DLM = 'DLM'
-    ERR = 'ERR'
+
 
 lexer("C://Users//artez//Desktop//example.txt")  # Replace 'input.txt' with the actual filename
