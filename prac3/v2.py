@@ -83,6 +83,7 @@ def lexer(filename):
                         c = file.read(1)
                     if is_kword(buf):
                         tok = Token(TokenNames.KWORD, buf)
+                    
                     else:
                         tok = Token(TokenNames.IDENT, buf)
                     add_token(tok)
