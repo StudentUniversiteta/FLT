@@ -56,8 +56,11 @@ def lexer(filename):
                         c = file.read(1)
                         CS = States.H
                     else:
-                        err_symbol = colon
-                        CS = States.ERR
+                        #err_symbol = colon
+                        #CS = States.ERR Создавалась лишняя ошибка при обработке двоеточия
+                        tok = Token(TokenNames.OPER, colon)
+                        add_token(tok)
+                        CS = States.H
                 elif CS == States.DLM:
                     if c == '(' or c == ')' or c == ';':
                         tok = Token(TokenNames.DELIM, c)
@@ -100,7 +103,6 @@ def lexer(filename):
     except IOError:
         print(f"Cannot open file {filename}")
         return -1
-
 def is_kword(string):
     return string in keywords
 
@@ -116,4 +118,4 @@ def add_token(tok):
     print("Token created - name:", tok.token_name, "value:", tok.token_value)
 
 
-lexer("C://Users//artez//Desktop//example.txt")  # Replace 'input.txt' with the actual filename
+lexer("C://Users//artez//Desktop//example.txt")
